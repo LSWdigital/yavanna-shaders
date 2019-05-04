@@ -1,0 +1,5 @@
+const one 1.0;
+fun main() Unit {
+	outColor := Vec4(get !fragColor.X, get !fragColor.Y, get !fragColor.Z, one);
+	return
+}

@@ -1,0 +1,28 @@
+const zero 0.0;
+const two 2.0;
+const one 1.0;
+const d 10.0;
+
+fun cmult(a | Vec2, b | Vec2) Vec2 {
+	return(Vec2(
+		-(*(get a.X, get b.X), *(get a.Y, get b.Y)),
+		+(*(get a.X, get b.Y), *(get a.Y, get b.X))
+	))
+};
+
+fun mandelbrot(depth | Float, z | Vec2, c | Vec2) Vec2 
+	when lt(depth, zero) is z
+	else mandelbrot(-(depth, one), +(cmult(z, z), c), c);
+
+fun sign(x | Float) Float {
+	return(-(x, length(x)))
+};
+
+fun main() Unit {
+	coord | Vec2 = Vec2(get !fragColor.X, get !fragColor.Y);
+	l | Vec2 = mandelbrot(d, coord, coord);
+	color | Float = /(length(l), two);
+	outColor := Vec4(color, color, color, one);
+	return
+}
+

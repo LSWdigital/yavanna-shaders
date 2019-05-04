@@ -1,0 +1,15 @@
+const one 1.0;
+
+fun cmult(a | Vec2, b | Vec2) Vec2 {
+	return(Vec2(
+		-(*(get a.X, get b.X), *(get a.Y, get b.Y)),
+		+(*(get a.X, get b.Y), *(get a.Y, get b.X))
+	))
+};
+
+fun main() Unit {
+	coord | Vec2 = Vec2(get !fragColor.X, get !fragColor.Y);
+	l | Float = length(cmult(coord, coord));
+	outColor := Vec4(l, l, l, one);
+	return
+}

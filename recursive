@@ -1,0 +1,12 @@
+const zero 0.0;
+const pointone 0.1;
+const one 1.0;
+const ten 10.0;
+
+fun loop(i | Float, x | Float) Float when lt(i, pointone) is x else loop(-(i, one), +(x, pointone));
+
+fun main() Unit {
+	color | Float = loop(ten, zero);
+	outColor := Vec4(color, color, color, one);
+	return
+}

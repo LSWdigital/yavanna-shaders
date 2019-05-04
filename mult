@@ -1,0 +1,7 @@
+const one 1.0;
+
+fun main() Unit {
+	shade | Float = *(get !fragColor.X, get !fragColor.Y);
+	outColor := Vec4(shade, shade, shade, one);
+	return
+}

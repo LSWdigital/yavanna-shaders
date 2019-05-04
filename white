@@ -1,0 +1,2 @@
+const one 1.0;
+fun main() Unit {outColor := Vec4(one, one, one, one); return}
