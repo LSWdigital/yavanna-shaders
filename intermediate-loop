@@ -1,0 +1,54 @@
+List( 
+      TConst("one", Float, FloatLiteral(1.0f)),
+      TConst("pointOne", Float, FloatLiteral(0.1f)),
+      TConst("nil", Float, FloatLiteral(0.0f)),
+      TConst("ten", Float, FloatLiteral(10.0f)),
+
+      TFun("main", Void, Nil, Nil, List( 
+        TVar("col", Vector(Float, 4)),
+        TVar("loopVar", Float),
+        TStore("col", TConstruct(List(
+          TName("nil", Float),
+          TName("nil", Float),
+          TName("nil", Float),
+          TName("nil", Float)
+        ))),
+        TStore("loopVar", TName("ten", Float)),
+
+        TLoop(
+          List(
+            TLT(
+              TLoad(Float, "loopVar"),
+              TName("pointOne", Float)
+            )
+          ),
+          List(
+            TStore("col", TAdd(
+                TLoad(Vector(Float, 4), "col"),
+                TConstruct(
+                  List(
+                    TName("pointOne", Float),
+                    TName("pointOne", Float),
+                    TName("pointOne", Float),
+                    TName("pointOne", Float)
+                  )
+                )
+              )
+            )
+          ),
+          List(
+            TStore("loopVar", TSub(
+                TLoad(Float, "loopVar"),
+                TName("one", Float)
+              )
+            )
+          ),
+          List(TStore("outColor",
+              TLoad(Vector(Float, 4), "col")
+            )
+          )
+        ),
+
+        TReturn)
+	)
+)
